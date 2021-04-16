@@ -38,42 +38,6 @@ public class LutraBot {
     public static TextChannel botStatus;
 
     public static void main(String[] args) throws LoginException, InterruptedException {
-/*        jda = JDABuilder.createDefault(Token.LutraToken).build();
-        jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setActivity(Activity.watching("cute otters"));
-
-        //JDABuilder
-        JDABuilder builder = JDABuilder.createDefault(Token.LutraToken);
-        builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
-        builder.enableIntents(GatewayIntent.GUILD_MESSAGES);
-        builder.enableIntents(GatewayIntent.GUILD_EMOJIS);
-        builder.enableIntents(GatewayIntent.GUILD_MESSAGE_REACTIONS);
-        builder.setMemberCachePolicy(MemberCachePolicy.ALL);
-        builder.setChunkingFilter(ChunkingFilter.NONE);
-        builder.addEventListeners(new GuildMemberLeave());
-        builder.addEventListeners(new GuildMemberJoin());
-        builder.addEventListeners(new GuildMessageReceived());
-        builder.addEventListeners(new GuildMessageReactionAdd());
-        builder.build();
-
-        //EventListeners
-        jda.addEventListener(new LutraBotReadyEvent());
-        jda.addEventListener(new Embeds());
-        jda.addEventListener(new Clear());
-        jda.addEventListener(new GuildMemberJoin());
-        jda.addEventListener(new GuildMemberLeave());
-        jda.addEventListener(new FeatureToggle());
-        jda.addEventListener(new TestCommands());
-        jda.addEventListener(new GuildMessageReceived());
-        jda.addEventListener(new Shutdown());
-        jda.addEventListener(new LutraBotShutDownEvent());
-        jda.addEventListener(new GuildMessageReactionAdd());
-        jda.addEventListener(new Ping());
-        //jda.addEventListener(new IfYouPingMeYourWaifuDies());
-        jda.addEventListener(new PresenceConfig());
-        */
-        //TODO check Redo
-        //Redo
 
         JDABuilder builder = JDABuilder.createDefault(Token.LutraToken);
         //Gateway Intents
