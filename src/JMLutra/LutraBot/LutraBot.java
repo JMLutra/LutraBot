@@ -38,7 +38,7 @@ public class LutraBot {
     public static TextChannel botStatus;
 
     public static void main(String[] args) throws LoginException, InterruptedException {
-
+/*
         JDABuilder builder = JDABuilder.createDefault(Token.LutraToken);
         //Gateway Intents
         builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
@@ -67,13 +67,49 @@ public class LutraBot {
         builder.addEventListeners(new PresenceConfig());
 
         //JDA
-        jda = builder.build();
+        //jda = builder.build().awaitReady();
+        jda = JDABuilder.createDefault(Token.LutraToken).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setActivity(Activity.watching("cute otters"));
 
 
-        jda.awaitReady();
+        jda.awaitReady();*/
 
+        jda = JDABuilder.createDefault(Token.LutraToken).build();
+        jda.getPresence().setStatus(OnlineStatus.ONLINE);
+        jda.getPresence().setActivity(Activity.watching("cute otters"));
+
+        //JDABuilder
+        JDABuilder builder = JDABuilder.createDefault(Token.LutraToken);
+        builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
+        builder.enableIntents(GatewayIntent.GUILD_MESSAGES);
+        builder.enableIntents(GatewayIntent.GUILD_EMOJIS);
+        builder.enableIntents(GatewayIntent.GUILD_MESSAGE_REACTIONS);
+        builder.setMemberCachePolicy(MemberCachePolicy.ALL);
+        builder.setChunkingFilter(ChunkingFilter.NONE);
+        builder.addEventListeners(new GuildMemberLeave());
+        builder.addEventListeners(new GuildMemberJoin());
+        builder.addEventListeners(new MessageReactionAdd());
+        builder.addEventListeners(new MessageReceived());
+        builder.build();
+
+        //EventListeners
+        jda.addEventListener(new LutraBotReadyEvent());
+        jda.addEventListener(new Embeds());
+        jda.addEventListener(new ModClear());
+        jda.addEventListener(new GuildMemberJoin());
+        jda.addEventListener(new GuildMemberLeave());
+        jda.addEventListener(new FeatureToggle());
+        jda.addEventListener(new TestCommands());
+        jda.addEventListener(new MessageReceived());
+        jda.addEventListener(new Shutdown());
+        jda.addEventListener(new LutraBotShutDownEvent());
+        jda.addEventListener(new MessageReactionAdd());
+        jda.addEventListener(new Ping());
+        //jda.addEventListener(new IfYouPingMeYourWaifuDies());
+        jda.addEventListener(new PresenceConfig());
+
+        jda.awaitReady();
     }
 
 }

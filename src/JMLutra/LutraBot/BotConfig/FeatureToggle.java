@@ -3,6 +3,7 @@ package JMLutra.LutraBot.BotConfig;
 import JMLutra.LutraBot.LutraBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -30,6 +31,7 @@ public class FeatureToggle extends ListenerAdapter {
         if (event.getAuthor().isBot()) return;
         if (!event.getMember().getUser().equals(BotOwner)) return;
         Message msg = event.getMessage();
+        MessageChannel cnl = event.getChannel();
 
         //Clear
         if (clearToggle){
@@ -82,7 +84,8 @@ public class FeatureToggle extends ListenerAdapter {
                toggle.addField("Löschen bei Reactions `[reactionsDelete]`", reactionDeleteField, false);
                toggle.setFooter("Aufgerufen von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                toggle.setColor(0xa016e0);
-               event.getChannel().sendMessage(toggle.build()).queue();
+
+               cnl.sendMessage(toggle.build()).queue();
 
                toggle.clear();
            } else {
@@ -96,7 +99,7 @@ public class FeatureToggle extends ListenerAdapter {
                        clearEmbedD.setFooter("Clear-Command deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        clearEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(clearEmbedD.build()).queue();
+                       cnl.sendMessage(clearEmbedD.build()).queue();
 
                        clearEmbedD.clear();
                    } else {
@@ -108,7 +111,7 @@ public class FeatureToggle extends ListenerAdapter {
                        clearEmbedA.setFooter("Clear-Command aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        clearEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(clearEmbedA.build()).queue();
+                       cnl.sendMessage(clearEmbedA.build()).queue();
 
                        clearEmbedA.clear();
                    }
@@ -123,7 +126,7 @@ public class FeatureToggle extends ListenerAdapter {
                        joinEmbedD.setFooter("Join-Nachrichten deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        joinEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(joinEmbedD.build()).queue();
+                       cnl.sendMessage(joinEmbedD.build()).queue();
 
                        joinEmbedD.clear();
                    } else {
@@ -135,7 +138,7 @@ public class FeatureToggle extends ListenerAdapter {
                        joinEmbedA.setFooter("Join-Nachrichten aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        joinEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(joinEmbedA.build()).queue();
+                       cnl.sendMessage(joinEmbedA.build()).queue();
 
                        joinEmbedA.clear();
                    }
@@ -150,7 +153,7 @@ public class FeatureToggle extends ListenerAdapter {
                        joinRoleEmbedD.setFooter("Join-Rolle deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        joinRoleEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(joinRoleEmbedD.build()).queue();
+                       cnl.sendMessage(joinRoleEmbedD.build()).queue();
 
                        joinRoleEmbedD.clear();
                    } else {
@@ -162,7 +165,7 @@ public class FeatureToggle extends ListenerAdapter {
                        joinRoleEmbedA.setFooter("Join-Rolle aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        joinRoleEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(joinRoleEmbedA.build()).queue();
+                       cnl.sendMessage(joinRoleEmbedA.build()).queue();
 
                        joinRoleEmbedA.clear();
                    }
@@ -177,7 +180,7 @@ public class FeatureToggle extends ListenerAdapter {
                        leaveEmbedD.setFooter("Leave-Nachricht deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        leaveEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(leaveEmbedD.build()).queue();
+                       cnl.sendMessage(leaveEmbedD.build()).queue();
 
                        leaveEmbedD.clear();
                    } else {
@@ -189,7 +192,7 @@ public class FeatureToggle extends ListenerAdapter {
                        leaveEmbedA.setFooter("Leave-Nachricht aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        leaveEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(leaveEmbedA.build()).queue();
+                       cnl.sendMessage(leaveEmbedA.build()).queue();
 
                        leaveEmbedA.clear();
                    }
@@ -204,7 +207,7 @@ public class FeatureToggle extends ListenerAdapter {
                        reactionEmbedD.setFooter("Reactions deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        reactionEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(reactionEmbedD.build()).queue();
+                       cnl.sendMessage(reactionEmbedD.build()).queue();
 
                        reactionEmbedD.clear();
                    } else {
@@ -216,7 +219,7 @@ public class FeatureToggle extends ListenerAdapter {
                        reactionEmbedA.setFooter("Reactions aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        reactionEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(reactionEmbedA.build()).queue();
+                       cnl.sendMessage(reactionEmbedA.build()).queue();
 
                        reactionEmbedA.clear();
                    }
@@ -231,7 +234,7 @@ public class FeatureToggle extends ListenerAdapter {
                        reactionDeleteEmbedD.setFooter("Löschen bei Reactions deaktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        reactionDeleteEmbedD.setColor(0xff0000);
 
-                       event.getChannel().sendMessage(reactionDeleteEmbedD.build()).queue();
+                       cnl.sendMessage(reactionDeleteEmbedD.build()).queue();
 
                        reactionDeleteEmbedD.clear();
                    } else {
@@ -243,7 +246,7 @@ public class FeatureToggle extends ListenerAdapter {
                        reactionDeleteEmbedA.setFooter("Löschen bei Reactions aktiviert von: " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                        reactionDeleteEmbedA.setColor(0x00ff00);
 
-                       event.getChannel().sendMessage(reactionDeleteEmbedA.build()).queue();
+                       cnl  .sendMessage(reactionDeleteEmbedA.build()).queue();
 
                        reactionDeleteEmbedA.clear();
                    }

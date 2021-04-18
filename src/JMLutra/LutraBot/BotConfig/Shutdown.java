@@ -2,6 +2,7 @@ package JMLutra.LutraBot.BotConfig;
 
 import JMLutra.LutraBot.LutraBot;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -17,6 +18,7 @@ public class Shutdown extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (event.getAuthor().isBot()) return;
         Message msg = event.getMessage();
+        MessageChannel cnl = event.getChannel();
 
         if (args[0].equalsIgnoreCase(LutraBot.prefix + "shutdown")){
             if (event.getMember().getUser().equals(jda.getUserById("469957180968271873"))) {
